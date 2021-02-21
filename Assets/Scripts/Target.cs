@@ -4,6 +4,7 @@ public class Target : MonoBehaviour
 {
     [SerializeField] private Vector3Int targetSize;
     [SerializeField] private float lifetimeMin, lifetimeMax;
+    private bool alive = true;
 
     public void Generate(GameObject targetPart, bool isPyramid)
     {
@@ -36,6 +37,10 @@ public class Target : MonoBehaviour
 
     public void Impact(Projectile proj)
     {
+        if (!alive)
+            return;
+
+        alive = false;
         foreach (var rb in GetComponentsInChildren<Rigidbody>())
         {
             rb.isKinematic = false;
@@ -45,5 +50,6 @@ public class Target : MonoBehaviour
                 proj.ExplosionRadius);
             Destroy(rb.gameObject, Random.Range(lifetimeMin, lifetimeMax));
         }
+        TargetGenerator.Instance.CreateTarget();
     }
 }

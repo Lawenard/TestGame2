@@ -200,7 +200,7 @@ MonoBehaviour:
   targetParts:
   - {fileID: 6907465149026477965, guid: 486262218d75d0f4bae4cfed00531ad7, type: 3}
   - {fileID: 6907465149026477965, guid: 108102e4786bad94d80c2365c36e14b3, type: 3}
-  distance: 30
+  distance: 40
   startingTargets: 5
   target: {fileID: 8150834967238027337, guid: 43f91fbedb6f41041802205202c3309c, type: 3}
 --- !u!1 &705507993

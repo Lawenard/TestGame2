@@ -24,6 +24,5 @@ public class Projectile : MonoBehaviour
             Destroy(col.gameObject);
 
         collision.gameObject.GetComponentInParent<Target>().Impact(this);
-        TargetGenerator.Instance.CreateTarget();
     }
 }

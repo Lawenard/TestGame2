@@ -27,17 +27,17 @@ public class TargetGenerator : MonoBehaviour
     private IEnumerator CreateTarget(float delay)
     {
         bool isOccupied = true;
-        Vector3 spawnPosition;
+        Vector3 spawnPosition = Vector3.zero;
 
         while (isOccupied)
         {
             spawnPosition = Random.onUnitSphere * distance;
-            if (!Physics.CheckSphere(spawnPosition, 16))
-                isOccupied = false;
+            isOccupied = Physics.CheckSphere(spawnPosition, 15);
             yield return new WaitForSeconds(delay);
+            print("Doing check for empty location");
         }
 
-        GameObject go = Instantiate(target, Random.onUnitSphere * distance, Quaternion.identity);
+        GameObject go = Instantiate(target, spawnPosition, Quaternion.identity);
         go.transform.LookAt(transform);
         go.GetComponent<Target>().Generate(
             targetParts[Random.Range(0, targetParts.Length)],

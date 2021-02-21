@@ -32,11 +32,9 @@ public class Joystick : EventTrigger
     {
         if (data != null)
         {
-            Vector2 newPosition;
-            newPosition = joystick.InverseTransformPoint(data.position - joystick.sizeDelta / 4);
-            newPosition = Vector2.ClampMagnitude(newPosition, joystick.sizeDelta.x / 2);
-            stick.anchoredPosition = newPosition;
-            Direction = newPosition.normalized;
+            stick.localPosition = joystick.InverseTransformPoint(data.position);
+            stick.anchoredPosition = Vector2.ClampMagnitude(stick.anchoredPosition, joystick.sizeDelta.x / 2);
+            Direction = stick.anchoredPosition.normalized;
         }
     }
 }

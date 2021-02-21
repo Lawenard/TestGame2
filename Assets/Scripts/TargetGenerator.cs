@@ -21,7 +21,7 @@ public class TargetGenerator : MonoBehaviour
 
     public void CreateTarget()
     {
-        StartCoroutine(CreateTarget(.2f));
+        StartCoroutine(CreateTarget(1));
     }
 
     private IEnumerator CreateTarget(float delay)

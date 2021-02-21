@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6041461195773351529}
   - component: {fileID: 5749149759697395951}
   m_Layer: 0
-  m_Name: TargetA
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSize: {x: 8, y: 8, z: 8}
-  targetPart: {fileID: 6907465149026477965, guid: 486262218d75d0f4bae4cfed00531ad7, type: 3}
+  lifetimeMin: 9
+  lifetimeMax: 18

@@ -3,6 +3,7 @@
 public class Target : MonoBehaviour
 {
     [SerializeField] private Vector3Int targetSize;
+    [SerializeField] private float lifetimeMin, lifetimeMax;
 
     public void Generate(GameObject targetPart, bool isPyramid)
     {
@@ -42,7 +43,7 @@ public class Target : MonoBehaviour
                 proj.ExplosionForce,
                 proj.transform.position,
                 proj.ExplosionRadius);
-            Destroy(rb.gameObject, Random.Range(9f, 21f));
+            Destroy(rb.gameObject, Random.Range(lifetimeMin, lifetimeMax));
         }
     }
 }

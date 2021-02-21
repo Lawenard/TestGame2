@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class Joystick : EventTrigger
 {
@@ -35,11 +32,11 @@ public class Joystick : EventTrigger
     {
         if (data != null)
         {
-            Vector2 diff, direction;
-            diff = joystick.InverseTransformPoint(data.position - joystick.sizeDelta / 4);
-            direction = Vector2.ClampMagnitude(diff, joystick.sizeDelta.x / 2);
-            stick.anchoredPosition = direction;
-            this.Direction = direction.normalized;
+            Vector2 newPosition;
+            newPosition = joystick.InverseTransformPoint(data.position - joystick.sizeDelta / 4);
+            newPosition = Vector2.ClampMagnitude(newPosition, joystick.sizeDelta.x / 2);
+            stick.anchoredPosition = newPosition;
+            Direction = newPosition.normalized;
         }
     }
 }

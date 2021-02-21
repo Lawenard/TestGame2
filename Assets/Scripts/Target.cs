@@ -42,6 +42,7 @@ public class Target : MonoBehaviour
                 proj.ExplosionForce,
                 proj.transform.position,
                 proj.ExplosionRadius);
+            Destroy(rb.gameObject, Random.Range(9f, 21f));
         }
     }
 }

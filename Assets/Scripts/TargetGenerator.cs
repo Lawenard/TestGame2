@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class TargetGenerator : MonoBehaviour
 {
@@ -15,11 +16,27 @@ public class TargetGenerator : MonoBehaviour
             Instance = this;
 
         for (int i = 0; i < startingTargets; i++)
-            CreateTarget();
+            StartCoroutine(CreateTarget(0));
     }
 
     public void CreateTarget()
     {
+        StartCoroutine(CreateTarget(.2f));
+    }
+
+    private IEnumerator CreateTarget(float delay)
+    {
+        bool isOccupied = true;
+        Vector3 spawnPosition;
+
+        while (isOccupied)
+        {
+            spawnPosition = Random.onUnitSphere * distance;
+            if (!Physics.CheckSphere(spawnPosition, 16))
+                isOccupied = false;
+            yield return new WaitForSeconds(delay);
+        }
+
         GameObject go = Instantiate(target, Random.onUnitSphere * distance, Quaternion.identity);
         go.transform.LookAt(transform);
         go.GetComponent<Target>().Generate(

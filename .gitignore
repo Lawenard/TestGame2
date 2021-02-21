@@ -1,0 +1,6 @@
+Library/
+Temp/
+UserSettings/
+obj/
+Assembly-CSharp.csproj
+TestGame1.sln
